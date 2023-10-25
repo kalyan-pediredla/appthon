@@ -2,9 +2,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:appthon/aptitude.dart';
-import 'package:appthon/loginpage.dart';
-import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:appthon/bottomnavbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gradient_app_bar/flutter_gradient_app_bar.dart';
 
@@ -18,7 +16,7 @@ class app extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  const MaterialApp(
-      
+       
       debugShowCheckedModeBanner: false,
       home: MyHomePage(title: '',),
     );
@@ -35,10 +33,12 @@ class home extends StatefulWidget {
 class _homeState extends State<home> {
   @override
   Widget build(BuildContext context) {
-    double wi = MediaQuery.of(context).size.width;
+    var size = MediaQuery.of(context).size;
+    final double itemheight=(size.height-kToolbarHeight-24)/4.3;
+    final double itemwidth=size.width/2;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 254, 238, 237),
-      appBar: GradientAppBar(
+      backgroundColor: const Color.fromARGB(255, 0, 7, 7),
+         appBar: GradientAppBar(
     iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
         centerTitle: true,
@@ -51,10 +51,9 @@ class _homeState extends State<home> {
               fontSize: 25),
         ),
     gradient: const LinearGradient(
-      colors: [Color.fromARGB(255, 124, 194, 252), Color.fromARGB(255, 237, 141, 254), Color.fromARGB(255, 254, 143, 135)],
+      colors: [Colors.blue, Colors.purple, Colors.red],
     ),
-  ),
-      
+         ),
       drawer: Drawer(
         child: ListView(
           children: const <Widget>[
@@ -71,13 +70,14 @@ class _homeState extends State<home> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 11,right: 11,top: 5,bottom: 10),
-        child: GridView(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        padding: const EdgeInsets.only(left: 2,right: 2,top: 2,bottom: 2),
+        child: GridView.count(
+          
+         childAspectRatio:(itemwidth/itemheight) ,
             crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-          ),
+            crossAxisSpacing: 2,
+            mainAxisSpacing: 2,
+          
           children: [
             GestureDetector(
               onTap: () {
@@ -87,9 +87,9 @@ class _homeState extends State<home> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                    gradient: const SweepGradient(
-                      colors:[ Color.fromARGB(255, 159, 245, 222),Color.fromARGB(255, 101, 151, 138),Color.fromARGB(255, 246, 236, 173),Color.fromARGB(255, 248, 200, 137),]),
-                    borderRadius: BorderRadius.circular(12)),
+                    gradient: const LinearGradient(
+                      colors:[ Color.fromARGB(255, 159, 245, 222),Color.fromARGB(255, 101, 151, 138),]),
+                    borderRadius: BorderRadius.circular(25)),
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -115,7 +115,7 @@ class _homeState extends State<home> {
               decoration: BoxDecoration(
                  gradient: const LinearGradient(
                       colors:[ Color.fromARGB(255, 246, 236, 173),Color.fromARGB(255, 153, 147, 109)]),
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(25)),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -147,7 +147,7 @@ class _homeState extends State<home> {
               decoration: BoxDecoration(
                  gradient: const LinearGradient(
                       colors:[ Color.fromARGB(255, 248, 200, 137),Color.fromARGB(255, 157, 138, 114),]),
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(25)),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -180,7 +180,7 @@ class _homeState extends State<home> {
                  gradient: const LinearGradient(
                       colors:[ Color.fromARGB(255, 206, 253, 179),Color.fromARGB(255, 123, 150, 110),]),
                  
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(25)),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -214,7 +214,7 @@ class _homeState extends State<home> {
                       colors:[ Color.fromARGB(255, 253, 184, 192),Color.fromARGB(255, 149, 112, 114),]
                       ),
                   
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(25)),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -248,7 +248,7 @@ class _homeState extends State<home> {
                       colors:[ Color.fromARGB(255, 244, 182, 249),Color.fromARGB(255, 139, 108, 142),]
                       ),
                   
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(25)),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -282,7 +282,7 @@ class _homeState extends State<home> {
                       colors:[ Color.fromARGB(255, 198, 188, 253),Color.fromARGB(255, 122, 118, 148),]
                       ),
                  
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(25)),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -316,7 +316,7 @@ class _homeState extends State<home> {
                       colors:[ Color.fromARGB(255, 191, 246, 253),Color.fromARGB(255, 115, 140, 143),]
                       ),
                   
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(25)),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -350,7 +350,7 @@ class _homeState extends State<home> {
                       colors:[ Color.fromARGB(255, 255, 191, 241),Color.fromARGB(255, 144, 117, 138),]
                       ),
                   color: const Color.fromARGB(255, 255, 191, 241),
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(25)),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -384,7 +384,7 @@ class _homeState extends State<home> {
                       colors:[ Color.fromARGB(255, 244, 252, 186),Color.fromARGB(255, 136, 140, 109),]
                       ),
                  
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(25)),
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
