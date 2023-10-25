@@ -3,6 +3,7 @@
 
 import 'package:appthon/aptitude.dart';
 import 'package:appthon/bottomnavbar.dart';
+import 'package:appthon/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gradient_app_bar/flutter_gradient_app_bar.dart';
 
@@ -18,7 +19,7 @@ class app extends StatelessWidget {
     return  const MaterialApp(
        
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(title: '',),
+      home: Splashscreen(),
     );
   }
 }
@@ -38,22 +39,7 @@ class _homeState extends State<home> {
     final double itemwidth=size.width/2;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 7, 7),
-         appBar: GradientAppBar(
-    iconTheme: const IconThemeData(color: Colors.black),
-        elevation: 0,
-        centerTitle: true,
-        title: const Text(
-          'Appthon',
-          style: TextStyle(
-              color: Colors.black,
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.bold,
-              fontSize: 25),
-        ),
-    gradient: const LinearGradient(
-      colors: [Colors.blue, Colors.purple, Colors.red],
-    ),
-         ),
+         
       drawer: Drawer(
         child: ListView(
           children: const <Widget>[
@@ -418,3 +404,4 @@ class _homeState extends State<home> {
     );
   }
 }
+ 

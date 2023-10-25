@@ -14,22 +14,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.black,
-        appBar: GradientAppBar(
-          iconTheme: const IconThemeData(color: Colors.black),
-          elevation: 0,
-          centerTitle: true,
-          title: const Text(
-            'Appthon',
-            style: TextStyle(
-                color: Colors.black,
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold,
-                fontSize: 25),
-          ),
-          gradient: const LinearGradient(
-            colors: [Colors.blue, Colors.purple, Colors.red],
-          ),
-        ),
+        
         body: ListView(
           children: <Widget>[
             const SizedBox(

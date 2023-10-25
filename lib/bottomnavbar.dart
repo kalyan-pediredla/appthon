@@ -22,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage>
   late TabController tabController;
 
   final colors = [
-  const home(),MyApp(), home(),MyApp(),MyApp(),
+   home(),MyApp(), home(),MyApp()
   ];
 
   @override
