@@ -45,6 +45,7 @@ dependencies:
   floating_frosted_bottom_bar: ^0.0.1
   custom_radio_grouped_button: ^2.2.1
   flutter_radio_button_group: ^0.0.4+5
+  draggable_home: ^1.0.5
 
 dev_dependencies:
   flutter_test:
