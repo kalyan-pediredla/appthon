@@ -1,31 +1,43 @@
 import 'package:Learner/aptitude.dart';
 import 'package:Learner/chatgpt.dart';
 import 'package:Learner/main.dart';
-import 'package:Learner/pages/chat_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:floating_frosted_bottom_bar/floating_frosted_bottom_bar.dart';
+import 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
 
+void main() {
+  runApp(const app());
+}
 
+class app extends StatelessWidget {
+  const app({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(
+        title: '',
+      ),
+    );
+  }
+}
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
+  // ignore: prefer_const_constructors_in_immutables
+  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  // ignore: library_private_types_in_public_api
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin 
+{
   late int currentPage;
   late TabController tabController;
-
-  final colors = [
-   home(),chatggpt(), home(),MyApp()
-  ];
+  final screens = [home(),chatggpt(),MyApp(),MyApp()];
+  final List<Color> colors = [Colors.yellow, Colors.red, Color.fromARGB(255, 202, 19, 248), Colors.blue, Colors.pink];
 
   @override
   void initState() {
@@ -56,76 +68,106 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FrostedBottomBar(
+    final Color unselectedColor = colors[currentPage].computeLuminance() < 0.5
+        ? Colors.black
+        : Colors.white;
+    return SafeArea(
+      child: Scaffold(
        
         
-        opacity: 0.6,
-        sigmaX: -1,
-        sigmaY: 0,
-        // ignore: sort_child_properties_last
-        child: TabBar(
-          indicatorPadding: const EdgeInsets.fromLTRB(6, 0, 6, 0),
-          controller: tabController,
-          indicator: const UnderlineTabIndicator(
-            borderSide: BorderSide(color: Color.fromARGB(255, 37, 45, 52), width: 4),
-            insets: EdgeInsets.fromLTRB(16, 0, 16, 8),
+        body: BottomBar(
+          // ignore: sort_child_properties_last
+          child: TabBar(
+            indicatorPadding: const EdgeInsets.fromLTRB(6, 0, 6, 0),
+            controller: tabController,
+            indicator: UnderlineTabIndicator(
+                borderSide: BorderSide(
+                    color: currentPage == 0
+                        ? colors[0]
+                        : currentPage == 1
+                            ? colors[1]
+                            : currentPage == 2
+                                ? colors[2]
+                                : currentPage == 3
+                                    ? colors[3]
+
+                                        : unselectedColor,
+                    width: 3),
+                insets: const EdgeInsets.fromLTRB(16, 0, 16, 8)),
+            tabs: [
+              SizedBox(
+                height: 55,
+                width: 40,
+                child: Center(
+                    child: Icon(
+                  Icons.home,
+                  color: currentPage == 0 ? colors[0] : unselectedColor,
+                )),
+              ),
+              SizedBox(
+                height: 55,
+                width: 40,
+                child: Center(
+                    child: Icon(
+                  Icons.search,
+                  color: currentPage == 1 ? colors[1] : unselectedColor,
+                )),
+              ),
+              SizedBox(
+                height: 55,
+                width: 40,
+                child: Center(
+                    child: Icon(
+                  Icons.add,
+                  color: currentPage == 2 ? colors[2] : unselectedColor,
+                )),
+              ),
+              SizedBox(
+                height: 55,
+                width: 40,
+                child: Center(
+                    child: Icon(
+                  Icons.favorite,
+                  color: currentPage == 3 ? colors[3] : unselectedColor,
+                )),
+              ),
+              
+            ],
           ),
-          tabs: const [
-            TabsIcon(
-                icons: Icons.home,
-                color: Colors.white),
-            TabsIcon(
-                icons: Icons.search,
-                color:  Colors.white),
-            TabsIcon(
-                icons: Icons.file_download,
-                color:  Colors.white),
-            TabsIcon(
-                icons: Icons.menu,
-                color: Colors.white),
-          ],
-        ),
-        borderRadius: BorderRadius.circular(500),
-        duration: const Duration(milliseconds: 800),
-        hideOnScroll: true,
-        body: (context, controller) => TabBarView(
-          controller: tabController,
-          dragStartBehavior: DragStartBehavior.down,
-          physics: const BouncingScrollPhysics(),
-          children: colors
-       
-        ),
-      ),
-    );
-  }
-}
+          fit: StackFit.expand,
+          
+          borderRadius: BorderRadius.circular(500),
+          duration: const Duration(seconds: 1),
+          curve: Curves.decelerate,
+          showIcon: true,
+          width: MediaQuery.of(context).size.width * 0.8,
+          barColor: colors[currentPage].computeLuminance() > 0.5
+              ? Color.fromARGB(71, 11, 0, 0)
+              : Color.fromARGB(71, 11, 0, 0),
+          start: 2,
+          end: 0,
+          offset: 10,
+          barAlignment: Alignment.bottomCenter,
+          iconHeight: 35,
+          iconWidth: 35,
+          reverse: false,
+          hideOnScroll: true,
+          scrollOpposite: false,
+          onBottomBarHidden: () {
 
-class TabsIcon extends StatelessWidget {
-  final Color color;
-  final double height;
-  final double width;
-  final IconData icons;
-
-  const TabsIcon(
-      {Key? key,
-      this.color = Colors.white,
-      this.height = 60,
-      this.width = 50,
-      required this.icons})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      width: width,
-      child: Center(
-        child: Icon(
-          icons,
-          color: color,
+          },
+          onBottomBarShown: () {
+            
+          },
+          body: (context, controller) => TabBarView(
+            controller: tabController,
+            dragStartBehavior: DragStartBehavior.down,
+            physics: BouncingScrollPhysics(),
+            children: screens
+          ),
         ),
       ),
     );
   }
 }
+
