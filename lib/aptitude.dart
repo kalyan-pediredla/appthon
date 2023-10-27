@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gradient_app_bar/flutter_gradient_app_bar.dart';
 import 'package:simple_list_tile/simple_list_tile.dart';
 
 class MyApp extends StatefulWidget {
@@ -14,16 +13,29 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.black,
-        
+        appBar: AppBar(
+          title: Text(
+            'Aptitude',
+            style: TextStyle(
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold,
+                fontSize: 23),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.black,
+          leading: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.arrow_back_ios)),
+        ),
         body: ListView(
           children: <Widget>[
             const SizedBox(
               height: 5,
             ),
             SimpleListTile(
-              onTap: () {
-
-              },
+              onTap: () {},
               title: const Text(
                 'Statistics',
                 style: TextStyle(

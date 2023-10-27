@@ -1,4 +1,4 @@
-import 'package:appthon/bottomnavbar.dart';
+import 'package:Learner/bottomnavbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,7 +16,7 @@ class _SplashscreenState extends State<Splashscreen>
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => const MyHomePage(title: '',)));
     });

@@ -1,11 +1,10 @@
 // ignore: duplicate_ignore
 // ignore_for_file: camel_case_types
 
-import 'package:appthon/aptitude.dart';
-import 'package:appthon/bottomnavbar.dart';
-import 'package:appthon/splashscreen.dart';
+import 'package:Learner/aptitude.dart';
+import 'package:Learner/splashscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gradient_app_bar/flutter_gradient_app_bar.dart';
+
 
 void main() {
   runApp(const app());
@@ -39,7 +38,12 @@ class _homeState extends State<home> {
     final double itemwidth=size.width/2;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 7, 7),
-         
+         appBar: AppBar(title: Text('Learner',style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 23),),
+                        centerTitle: true,
+                        backgroundColor: Colors.black,),
       drawer: Drawer(
         child: ListView(
           children: const <Widget>[

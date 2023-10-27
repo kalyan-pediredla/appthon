@@ -1,5 +1,7 @@
-import 'package:appthon/aptitude.dart';
-import 'package:appthon/main.dart';
+import 'package:Learner/aptitude.dart';
+import 'package:Learner/chatgpt.dart';
+import 'package:Learner/main.dart';
+import 'package:Learner/pages/chat_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:floating_frosted_bottom_bar/floating_frosted_bottom_bar.dart';
@@ -22,13 +24,13 @@ class _MyHomePageState extends State<MyHomePage>
   late TabController tabController;
 
   final colors = [
-   home(),MyApp(), home(),MyApp()
+   home(),chatggpt(), home(),MyApp()
   ];
 
   @override
   void initState() {
     currentPage = 0;
-    tabController = TabController(length: 5, vsync: this);
+    tabController = TabController(length: 4, vsync: this);
     tabController.animation!.addListener(
       () {
         final value = tabController.animation!.value.round();
