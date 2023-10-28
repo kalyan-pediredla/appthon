@@ -3,6 +3,7 @@
 
 import 'package:Learner/aptitude.dart';
 import 'package:Learner/splashscreen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 
@@ -36,12 +37,34 @@ class _homeState extends State<home> {
     var size = MediaQuery.of(context).size;
     final double itemheight=(size.height-kToolbarHeight-24)/4.3;
     final double itemwidth=size.width/2;
+       const colorizeColors = [
+  Color.fromARGB(255, 250, 248, 249),
+  Colors.blue,
+  Colors.yellow,
+  Colors.red,
+];
+
+const colorizeTextStyle = TextStyle(
+  fontSize: 25.0,
+  fontFamily: 'Horizon',
+  fontWeight: FontWeight.bold
+);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 7, 7),
-         appBar: AppBar(title: Text('Learner',style: TextStyle(
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 23),),
+         appBar: AppBar(title:
+          AnimatedTextKit(
+            totalRepeatCount: 6,
+   //         repeatForever: true,
+    animatedTexts: [
+      ColorizeAnimatedText(
+        'Boost Your Career',
+        textStyle: colorizeTextStyle,
+        colors: colorizeColors,
+      ),
+      
+    ],
+    isRepeatingAnimation: true,
+  ),
                         centerTitle: true,
                         backgroundColor: Colors.black,),
       drawer: Drawer(

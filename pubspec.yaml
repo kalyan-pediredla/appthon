@@ -49,6 +49,8 @@ dependencies:
   dash_chat_2: ^0.0.19
   chat_gpt_sdk:
   flutter_floating_bottom_bar: ^1.2.0
+  lottie:
+  animated_text_kit: ^4.2.2 
 
 dev_dependencies:
   flutter_test:
