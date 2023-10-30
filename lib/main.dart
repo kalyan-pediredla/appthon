@@ -72,7 +72,7 @@ const colorizeTextStyle = TextStyle(
           children: const <Widget>[
             DrawerHeader(
               child: Text('Drawer Header'),
-            ),
+               ),
             ListTile(
               title: Text('Item 1'),
             ),
