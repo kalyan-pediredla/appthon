@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
               ),
               borderRadius: BorderRadius.circular(20),
               tileColor: const Color.fromARGB(255, 242, 240, 240),
-              circleColor: const Color.fromARGB(255, 226, 205, 205),
+              circleColor: const Color.fromARGB(255, 226, 206, 205),
               circleDiameter: 60,
               gradient: const LinearGradient(
                 colors: [
