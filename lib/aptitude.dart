@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
               circleDiameter: 60,
               gradient: const LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 249, 249, 250),
+                  Color.fromARGB(255, 249, 248, 250),
                   Color.fromARGB(255, 251, 251, 252)
                 ],
               ),
