@@ -84,7 +84,7 @@ class _MyAppState extends State<MyApp> {
               ),
               trailing: const Icon(
                 Icons.arrow_forward_ios,
-                color: Color.fromARGB(255, 143, 142, 142),
+                color: Color.fromARGB(255, 143, 141, 142),
               ),
               leading: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
