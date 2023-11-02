@@ -32,12 +32,18 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin 
-{
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   late int currentPage;
   late TabController tabController;
-  final screens = [home(),chatggpt(),MyApp(),MyApp()];
-  final List<Color> colors = [Colors.yellow, Colors.red, Color.fromARGB(255, 202, 19, 248), Colors.blue, Colors.pink];
+  final screens = [home(), chatggpt(), Aptitude(), Aptitude()];
+  final List<Color> colors = [
+    Colors.yellow,
+    Color.fromARGB(255, 58, 14, 255),
+    Color.fromARGB(255, 13, 109, 2),
+    Color.fromARGB(255, 255, 0, 0),
+    Colors.pink
+  ];
 
   @override
   void initState() {
@@ -73,8 +79,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         : Colors.white;
     return SafeArea(
       child: Scaffold(
-       
-        
         body: BottomBar(
           // ignore: sort_child_properties_last
           child: TabBar(
@@ -90,8 +94,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                 ? colors[2]
                                 : currentPage == 3
                                     ? colors[3]
-
-                                        : unselectedColor,
+                                    : unselectedColor,
                     width: 3),
                 insets: const EdgeInsets.fromLTRB(16, 0, 16, 8)),
             tabs: [
@@ -131,11 +134,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   color: currentPage == 3 ? colors[3] : unselectedColor,
                 )),
               ),
-              
             ],
           ),
           fit: StackFit.expand,
-          
+
           borderRadius: BorderRadius.circular(500),
           duration: const Duration(seconds: 1),
           curve: Curves.decelerate,
@@ -153,21 +155,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           reverse: false,
           hideOnScroll: true,
           scrollOpposite: false,
-          onBottomBarHidden: () {
-
-          },
-          onBottomBarShown: () {
-            
-          },
+          onBottomBarHidden: () {},
+          onBottomBarShown: () {},
           body: (context, controller) => TabBarView(
-            controller: tabController,
-            dragStartBehavior: DragStartBehavior.down,
-            physics: BouncingScrollPhysics(),
-            children: screens
-          ),
+              controller: tabController,
+              dragStartBehavior: DragStartBehavior.down,
+              physics: BouncingScrollPhysics(),
+              children: screens),
         ),
       ),
     );
   }
 }
-
