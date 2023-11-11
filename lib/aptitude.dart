@@ -1,4 +1,5 @@
 import 'package:Learner/Screens/quizscreen.dart';
+import 'package:animation_list/animation_list.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_list_tile/simple_list_tile.dart';
 
@@ -97,48 +98,52 @@ class _AptitudeState extends State<Aptitude> {
         body: ListView.builder(
             itemCount: t.length,
             itemBuilder: (BuildContext context, i) {
-              return Card(
-                color: const Color.fromARGB(0, 0, 0, 0),
-                child: SimpleListTile(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => quizapp()));
-                  },
-                  title: Text(
-                    t[i].text,
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 40, 39, 39),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+              return AnimationList(
+                duration: 1500,
+                reBounceDepth: 30,
+                children:[ Card(
+                  color: const Color.fromARGB(0, 0, 0, 0),
+                  child: SimpleListTile(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => quizapp()));
+                    },
+                    title: Text(
+                      t[i].text,
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 40, 39, 39),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: Color.fromARGB(255, 143, 141, 142),
+                    ),
+                    leading: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          width: 30,
+                          height: 30,
+                          image: NetworkImage(
+                            t[i].imgpath,
+                          ),
+                        )
+                      ],
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                    tileColor: const Color.fromARGB(255, 242, 240, 240),
+                    circleColor: const Color.fromARGB(255, 226, 206, 205),
+                    circleDiameter: 60,
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color.fromARGB(255, 249, 248, 250),
+                        Color.fromARGB(255, 251, 251, 252)
+                      ],
                     ),
                   ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: Color.fromARGB(255, 143, 141, 142),
-                  ),
-                  leading: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        width: 30,
-                        height: 30,
-                        image: NetworkImage(
-                          t[i].imgpath,
-                        ),
-                      )
-                    ],
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                  tileColor: const Color.fromARGB(255, 242, 240, 240),
-                  circleColor: const Color.fromARGB(255, 226, 206, 205),
-                  circleDiameter: 60,
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color.fromARGB(255, 249, 248, 250),
-                      Color.fromARGB(255, 251, 251, 252)
-                    ],
-                  ),
-                ),
+                ),]
               );
             }),
       ),
